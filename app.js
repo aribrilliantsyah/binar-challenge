@@ -24,8 +24,6 @@ const swaggerDocument = YAML.load('collection.yaml')
 //Setup Log
 const originalSend = app.response.send
 
-let log_name = '/logs/access_log_'+moment().format('YYYY_MM_DD')+'.log';
-let accessLogStream = fs.createWriteStream(path.join(__dirname, log_name), { flags: 'a' })
 
 app.response.send = function sendOverWrite(body) {
     originalSend.call(this, body)
@@ -52,9 +50,11 @@ morgan.token('req-body', (req, res) => {
     return null
 })
 
-// app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] | @req :req-body => @res :res-body', {
-//     stream: accessLogStream
-// }))
+// let log_name = '/logs/access_log_'+moment().format('YYYY_MM_DD')+'.log';
+// let accessLogStream = fs.createWriteStream(path.join(__dirname, log_name), { flags: 'a' })
+app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] | @req :req-body => @res :res-body', {
+    // stream: accessLogStream
+}))
 
 app.set('view engine', 'ejs')
 
