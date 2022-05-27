@@ -3,7 +3,7 @@ info:
   title: CHALLENGE 5 - 7 - ARI
   version: 1.0.0
 servers:
-  - url: http://localhost:3000
+  - url: https://binar-ch6.herokuapp.com/
 components:
   securitySchemes:
     bearerAuth:
