@@ -17,13 +17,13 @@
     "logging": false
   },
   "production": {
-    "username": "xrhppaqzezyugj",
-    "password": "1ed1b39bb510d1a060c89dfca186eadaae86ea81c76a139197490e093f1f1816",
-    "database": "d416i9jrldm99o",
-    "host": "ec2-52-212-228-71.eu-west-1.compute.amazonaws.com",
+    "username": "lixqgvxjwvbzed",
+    "password": "1da20a392c0b27544de0c83255aa2fca21aae01cf7041c819e6ec65a54895258",
+    "database": "d235328ekff32a",
+    "host": "ec2-52-214-23-110.eu-west-1.compute.amazonaws.com",
     "dialect": "postgres",
     "port": "5432",
-    "url": "postgres://xrhppaqzezyugj:1ed1b39bb510d1a060c89dfca186eadaae86ea81c76a139197490e093f1f1816@ec2-52-212-228-71.eu-west-1.compute.amazonaws.com:5432/d416i9jrldm99o",
+    "url": "postgres://lixqgvxjwvbzed:1da20a392c0b27544de0c83255aa2fca21aae01cf7041c819e6ec65a54895258@ec2-52-214-23-110.eu-west-1.compute.amazonaws.com:5432/d235328ekff32a",
     "dialectOptions": {
       "ssl": { 
         "require": true,
