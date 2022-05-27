@@ -1,0 +1,359 @@
+openapi: 3.0.0
+info:
+  title: CHALLENGE 5 - ARI
+  version: 1.0.0
+servers:
+  - url: https://argan-ch06.herokuapp.com
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+tags:
+  - name: auth
+  - name: user game
+  - name: user game biodata
+  - name: user game history
+paths:
+  /api/v1/login:
+    post:
+      tags:
+        - auth
+      summary: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: ariganteng
+                password: rahasia
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/register:
+    post:
+      tags:
+        - auth
+      summary: register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: ariganteng11
+                password: rahasia
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/user-game:
+    get:
+      tags:
+        - user game
+      summary: get all user game
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - user game
+      summary: create user game
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: siganteng
+                password: wkwkwk-ini-pass
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/user-game/{id}:
+    get:
+      tags:
+        - user game
+      summary: find by id user game
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - user game
+      summary: update user game
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: ariganteng
+                password: rahasia
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - user game
+      summary: delete user game
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/user-game-biodata:
+    get:
+      tags:
+        - user game biodata
+      summary: get all user biodata
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: user_game_id
+          in: query
+          schema:
+            type: integer
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - user game biodata
+      summary: create user biodata
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                user_game_id: 3
+                name: Ari Ardiansyah
+                gender: Male
+                date_of_birth: '2000-09-08'
+                place_of_birth: Bandung
+                address: Kp.Rancakasiat
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/user-game-biodata/{id}:
+    get:
+      tags:
+        - user game biodata
+      summary: find by id user biodata
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - user game biodata
+      summary: update user biodata
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                user_game_id: 1
+                name: Ari Ganteng1
+                gender: male
+                date_of_birth: '2000-09-09'
+                place_of_birth: Bandung1
+                address: Kp.Rancakasiat1
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - user game biodata
+      summary: delete user biodata
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/user-game-history:
+    get:
+      tags:
+        - user game history
+      summary: get all user history
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: user_game_id
+          in: query
+          schema:
+            type: integer
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - user game history
+      summary: create user history
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                user_game_id: 3
+                score: 10
+                start_at: '2022-04-07 10:10:00'
+                end_at: '2022-04-07 12:10:00'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/user-game-history/{id}:
+    get:
+      tags:
+        - user game history
+      summary: find by id user history
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - user game history
+      summary: update user history
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                user_game_id: 4
+                score: 100
+                start_at: '2022-04-07 10:10:00'
+                end_at: '2022-04-07 12:10:00'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - user game history
+      summary: delete user history
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

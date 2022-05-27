@@ -1,0 +1,35 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "db_binar_challenge",
+    "host": "localhost",
+    "dialect": "postgres",
+    "port": "5432"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "db_binar_challenge",
+    "host": "localhost",
+    "dialect": "postgres",
+    "port": "5432",
+    "logging": false
+  },
+  "production": {
+    "username": "xrhppaqzezyugj",
+    "password": "1ed1b39bb510d1a060c89dfca186eadaae86ea81c76a139197490e093f1f1816",
+    "database": "d416i9jrldm99o",
+    "host": "ec2-52-212-228-71.eu-west-1.compute.amazonaws.com",
+    "dialect": "postgres",
+    "port": "5432",
+    "url": "postgres://xrhppaqzezyugj:1ed1b39bb510d1a060c89dfca186eadaae86ea81c76a139197490e093f1f1816@ec2-52-212-228-71.eu-west-1.compute.amazonaws.com:5432/d416i9jrldm99o",
+    "dialectOptions": {
+      "ssl": { 
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }  
+  }
+}
+

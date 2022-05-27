@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../../partials/head'); %>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row row-no-padding">
+      <%- include('../../partials/sidebar', {active_menu: 'user_game'}); %>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-dashed-bottom">
+          <div>
+            <h6><b>User Game Biodata</b></h6>
+          </div>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <a href="/logout" type="button" class="btn btn-sm btn-outline-danger">Logout</a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-12 col-xxl-12 mb-4 mb-xxl-8">
+            <div
+              class="card bgi-position-y-bottom bgi-position-x-end bgi-no-repeat bgi-size-cover min-h-250px h-xl-100 bg-gray-200 border-0"
+              style="background-position: 100% 100%;background-size: 300px auto;background-image:url('https://preview.keenthemes.com/good/assets/media/misc/city.png')">
+              <div class="card-body d-flex flex-column justify-content-center ps-lg-15">
+                <h3 class="font-13 text-gray-800 fw-boldest mb-4 mb-lg-8">Hari yang indah
+                  <br>Untuk saling memaafkan</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-12 col-xxl-12 mb-5 mb-xxl-10">
+            <div class="d-flex flex-row justify-content-between mb-2">
+              <span><b>My Form</b></span>
+              <span><a href="/user-game-biodata?user_game_id=<%= user_game_id %>" class="btn btn-sm btn-custom">Back</a></span>
+            </div>
+            <form class="row" id="form">
+              <input type="hidden" name="user_game_id" value="<%= user_game_id %>">
+              <input type="hidden" name="id" value="<%= id %>">
+              <div class="mb-3 col-xl-6">
+                <label class="form-label">Name</label>
+                <input type="text" name="name" class="form-control form-control-sm">
+                <!-- <div class="form-text"></div> -->
+              </div>
+              <div class="mb-3 col-xl-6">
+                <label class="form-label">Gender</label>
+                <select class="form-control form-control-sm" name="gender">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+                <!-- <div class="form-text"></div> -->
+              </div>
+              <div class="mb-3 col-xl-6">
+                <label class="form-label">Date Of Birth</label>
+                <input type="date" name="date_of_birth" class="form-control form-control-sm">
+                <!-- <div class="form-text"></div> -->
+              </div>
+              <div class="mb-3 col-xl-6">
+                <label class="form-label">Place Of Birth</label>
+                <input type="text" name="place_of_birth" class="form-control form-control-sm">
+                <!-- <div class="form-text"></div> -->
+              </div>
+              <div class="mb-3 col-xl-12">
+                <label class="form-label">Address</label>
+                <textarea name="address" class="form-control form-control-sm"></textarea>
+                <!-- <div class="form-text"></div> -->
+              </div>
+              <div class="col-xl-6">
+                <button type="submit" class="btn btn-custom">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <%- include('../../partials/foot'); %>
+  <script>
+    function fill_data(){
+      let id = $('[name="id"]').val();
+      let settings = {
+        "url": "/api/v1/user-game-biodata/"+id,
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer <%= token %>",
+        },
+      };
+
+      let el_name = $('[name="name"]')
+      let el_gender = $('[name="gender"]')
+      let el_date_of_birth = $('[name="date_of_birth"]')
+      let el_place_of_birth = $('[name="place_of_birth"]')
+      let el_address = $('[name="address"]')
+
+      $.ajax(settings).done((res) => {
+        if(res?.data?.name){
+          //console.log(res?.data)
+          el_name.val(res?.data?.name)
+          el_gender.val(res?.data?.gender)
+          el_date_of_birth.val(res?.data?.date_of_birth)
+          el_place_of_birth.val(res?.data?.place_of_birth)
+          el_address.val(res?.data?.address)
+        }
+      }).fail((xhr) => {
+        alert('Failed Fetch Data From Server')
+      })
+    }
+    
+    $('#form').on('submit', (e) => {
+      e.preventDefault()
+      let id = $('[name="id"]').val()
+      let user_game_id = $('[name="user_game_id"]').val()
+      let name = $('[name="name"]').val()
+      let gender = $('[name="gender"]').val()
+      let date_of_birth = $('[name="date_of_birth"]').val()
+      let place_of_birth = $('[name="place_of_birth"]').val()
+      let address = $('[name="address"]').val()
+
+      if(!user_game_id || !name ||
+        !gender || !date_of_birth ||
+        !place_of_birth || !address){
+        alert('Please Complete the Form!')
+        return;
+      }
+
+      let settings = {
+        "url": "/api/v1/user-game-biodata/"+id,
+        "method": "PUT",
+        "timeout": 0,
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer <%= token %>",
+        },
+
+        "data": JSON.stringify({
+          "user_game_id": user_game_id,
+          "name": name,
+          "gender": gender,
+          "date_of_birth": date_of_birth,
+          "place_of_birth": place_of_birth,
+          "address": address
+        }),
+      };
+
+      $.ajax(settings).done(function (response) {
+        //console.log(response)
+        alert('Success Update Data')
+        window.location = '/user-game-biodata?user_game_id='+user_game_id
+      }).fail((xhr) => {
+        alert('Failed Process Data To Server')
+      })
+    })
+
+    $(() => {    
+      fill_data()
+      let user_game_id = $('[name="user_game_id"]').val()
+      if(!user_game_id){
+        window.location = '/user-game-biodata'
+      }
+    })
+  </script>
+</body>
+
+</html>

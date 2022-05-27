@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../../partials/head'); %>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row row-no-padding">
+      <%- include('../../partials/sidebar', {active_menu: 'user_game'}); %>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-dashed-bottom">
+          <div>
+            <h6><b>User Game History</b></h6>
+          </div>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <a href="/logout" type="button" class="btn btn-sm btn-outline-danger">Logout</a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-12 col-xxl-12 mb-4 mb-xxl-8">
+            <div
+              class="card bgi-position-y-bottom bgi-position-x-end bgi-no-repeat bgi-size-cover min-h-250px h-xl-100 bg-gray-200 border-0"
+              style="background-position: 100% 100%;background-size: 300px auto;background-image:url('https://preview.keenthemes.com/good/assets/media/misc/city.png')">
+              <div class="card-body d-flex flex-column justify-content-center ps-lg-15">
+                <h3 class="font-13 text-gray-800 fw-boldest mb-4 mb-lg-8">Hari yang indah
+                  <br>Untuk saling memaafkan</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-12 col-xxl-12 mb-5 mb-xxl-10">
+            <div class="d-flex flex-row justify-content-between mb-2">
+              <span><b>My Form</b></span>
+              <span><a href="/user-game-history?user_game_id=<%= user_game_id %>" class="btn btn-sm btn-custom">Back</a></span>
+            </div>
+            <form class="row" id="form">
+              <input type="hidden" name="user_game_id" value="<%= user_game_id %>">
+              <input type="hidden" name="id" value="<%= id %>">
+              <input type="hidden" name="link_video">
+              <div class="mb-3 col-xl-6">
+                <label class="form-label">Score</label>
+                <input type="number" name="score" class="form-control form-control-sm">
+                <!-- <div class="form-text"></div> -->
+              </div>
+              <div class="mb-3 col-xl-6">
+                <label class="form-label">Video</label>
+                <input type="file" name="media" class="form-control form-control-sm">
+                <!-- <div class="form-text"></div> -->
+              </div>
+              <div class="mb-3 col-xl-6">
+                <label class="form-label">Start At</label>
+                <input type="datetime-local" name="start_at" class="form-control form-control-sm">
+                <!-- <div class="form-text"></div> -->
+              </div>
+              <div class="mb-3 col-xl-6">
+                <label class="form-label">End At</label>
+                <input type="datetime-local" name="end_at" class="form-control form-control-sm">
+                <!-- <div class="form-text"></div> -->
+              </div>
+              <div class="col-xl-12">
+                <button type="submit" class="btn btn-custom">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <%- include('../../partials/foot'); %>
+  <script>
+    function fill_data(){
+      let id = $('[name="id"]').val();
+      let settings = {
+        "url": "/api/v1/user-game-history/"+id,
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer <%= token %>",
+        },
+      };
+
+      let el_score = $('[name="score"]')
+      let el_start_at = $('[name="start_at"]')
+      let el_end_at = $('[name="end_at"]')
+      let el_link_video = $('[name="link_video"]')
+
+      $.ajax(settings).done((res) => {
+        if(res?.data?.score){
+          //console.log(res?.data)
+          el_score.val(res?.data?.score)
+          el_start_at.val(moment(res?.data?.start_at, 'YYYY-MM-DD[T]HH:mm:ss[Z]').format("YYYY-MM-DDTkk:mm"))
+          el_end_at.val(moment(res?.data?.end_at, 'YYYY-MM-DD[T]HH:mm:ss[Z]').format("YYYY-MM-DDTkk:mm"))
+          el_link_video.val(res?.data?.link_video)
+        }
+      }).fail((xhr) => {
+        alert('Failed Fetch Data From Server')
+      })
+    }
+    
+    $('#form').on('submit', (e) => {
+      e.preventDefault()
+      let id = $('[name="id"]').val()
+      let user_game_id = $('[name="user_game_id"]').val()
+      let score = $('[name="score"]').val()
+      let start_at = $('[name="start_at"]').val()
+      let end_at = $('[name="end_at"]').val()
+      let link_video = $('[name="link_video"]').val()
+
+      
+      if(!user_game_id || score.toString() == '' ||
+        !start_at || !end_at){
+        alert('Please Complete the Form!')
+        return;
+      }
+
+      if(start_at > end_at || end_at < start_at){
+        alert('End At Must Be Greater Than Start At')
+        return;
+      }
+
+      let settings = {
+        "url": "/api/v1/user-game-history/"+id,
+        "method": "PUT",
+        "timeout": 0,
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer <%= token %>",
+        },
+
+        "data": JSON.stringify({
+          "user_game_id": user_game_id,
+          "score": score,
+          "start_at": start_at,
+          "end_at": end_at
+        }),
+      };
+
+      $.ajax(settings).done(function (response) {
+        //console.log(response)
+        upload_media(id)
+      }).fail((xhr) => {
+        alert('Failed Process Data To Server')
+      })
+    })
+
+    function upload_media(id){
+      let user_game_id = $('[name="user_game_id"]').val()
+      let media = $('[name="media"]')[0].files[0]
+      if(media == undefined){
+        alert('Success Update Data Without Media')
+        window.location = '/user-game-history?user_game_id='+user_game_id
+        return;
+      }
+      var form = new FormData();
+      form.append("media", media);
+
+      var settings = {
+        "url": "/api/v1/user-game-history/upload-video/"+id,
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+          "Authorization": "Bearer <%= token %>",
+        },
+        "processData": false,
+        "mimeType": "multipart/form-data",
+        "contentType": false,
+        "data": form
+      };
+
+      $.ajax(settings).done(function (response) {
+        alert('Success Update Data & Upload Media')
+        window.location = '/user-game-history?user_game_id='+user_game_id
+      }).fail((xhr) => {
+        alert('Success Update Data & Failed Upload Media')
+        window.location = '/user-game-history?user_game_id='+user_game_id
+      })
+    }
+
+    $(() => {    
+      fill_data()
+      let user_game_id = $('[name="user_game_id"]').val()
+      if(!user_game_id){
+        window.location = '/user-game-history'
+      }
+    })
+  </script>
+</body>
+
+</html>

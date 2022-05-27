@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../../partials/head'); %>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row row-no-padding">
+      <%- include('../../partials/sidebar', {active_menu: 'user_game'}); %>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-dashed-bottom">
+          <div>
+            <h6><b>User Game History</b></h6>
+          </div>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <a href="/logout" type="button" class="btn btn-sm btn-outline-danger">Logout</a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-12 col-xxl-12 mb-4 mb-xxl-8">
+            <div
+              class="card bgi-position-y-bottom bgi-position-x-end bgi-no-repeat bgi-size-cover min-h-250px h-xl-100 bg-gray-200 border-0"
+              style="background-position: 100% 100%;background-size: 300px auto;background-image:url('https://preview.keenthemes.com/good/assets/media/misc/city.png')">
+              <div class="card-body d-flex flex-column justify-content-center ps-lg-15">
+                <h3 class="font-13 text-gray-800 fw-boldest mb-4 mb-lg-8">Hari yang indah
+                  <br>Untuk saling memaafkan</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-12 col-xxl-12 mb-5 mb-xxl-10">
+            <div class="d-flex flex-row justify-content-between mb-2">
+              <span><b>My Data</b></span>
+              <span><a href="/user-game-history?user_game_id=<%= user_game_id %>" class="btn btn-sm btn-custom">Back</a></span>
+            </div>
+            <input type="hidden" name="id" value="<%= id %>">
+            <table class="table">
+              <tbody id="data">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <%- include('../../partials/foot'); %>
+  <script>
+    function get_data(){
+      let id = $('[name="id"]').val();
+      let settings = {
+        "url": "/api/v1/user-game-history/"+id,
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer <%= token %>",
+        },
+      };
+
+      let el = $('#data')
+
+      $.ajax(settings).done((res) => {
+        if(res?.data?.start_at){
+          let data = res?.data
+          let html = ''
+          html += `<tr>
+              <td>Score</td>
+              <th>${data.score}</th>
+            </tr>`
+          html += `<tr>
+              <td>Start At</td>
+              <th>${convertDate(data.start_at)}</th>
+            </tr>`
+          html += `<tr>
+              <td>End At</td>
+              <th>${convertDate(data.end_at)}</th>
+            </tr>`
+          html += `<tr>
+              <td>Playtime</td>
+              <th>${data.playtime}</th>
+            </tr>`
+          html += `<tr>
+              <td>Created at</td>
+              <th>${convertDate(data.createdAt)}</th>
+            </tr>`
+          html += `<tr>
+              <td>Updated at</td>
+              <th>${convertDate(data.updatedAt)}</th>
+            </tr>`
+
+          $(el).html(html)
+        }
+      }).fail((xhr) => {
+        alert('Failed Fetch Data From Server')
+      })
+    }
+
+    function convertDate(date){
+      return moment(date, 'YYYY-MM-DD[T]HH:mm:ss[Z]').format('DD-MM-YYYY HH:mm:ss')
+    }
+
+    $(() => {
+      get_data()
+    })
+
+  </script>
+</body>
+
+</html>

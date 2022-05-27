@@ -1,0 +1,51 @@
+html,
+body {
+  height: 100%;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f6f1e9;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[name="username"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[name="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.btn-custom {
+  color: #fff;
+  border-color: #4fc9da;
+  background-color: #4fc9da;
+}
+
+.btn-custom:hover {
+  background: #56b7c4;
+  color: #fff;
+}

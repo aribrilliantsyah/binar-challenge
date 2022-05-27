@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../../partials/head'); %>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row row-no-padding">
+      <%- include('../../partials/sidebar', {active_menu: 'user_game'}); %>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-dashed-bottom">
+          <div>
+            <h6><b>User Game</b></h6>
+          </div>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <a href="/logout" type="button" class="btn btn-sm btn-outline-danger">Logout</a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-12 col-xxl-12 mb-4 mb-xxl-8">
+            <div class="card bgi-position-y-bottom bgi-position-x-end bgi-no-repeat bgi-size-cover min-h-250px h-xl-100 bg-gray-200 border-0" style="background-position: 100% 100%;background-size: 300px auto;background-image:url('https://preview.keenthemes.com/good/assets/media/misc/city.png')">
+              <div class="card-body d-flex flex-column justify-content-center ps-lg-15">
+                <h3 class="font-13 text-gray-800 fw-boldest mb-4 mb-lg-8">Hari yang indah 
+                <br>Untuk saling memaafkan</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-12 col-xxl-12 mb-5 mb-xxl-10">
+            <div class="d-flex flex-row justify-content-between mb-2">
+              <span><b>My Data</b></span>
+              <% if(role_id == 1){ %>
+                <span><a href="/user-game/create" class="btn btn-sm btn-custom">New Data</a></span>
+              <% } %>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <td>UID</td>
+                    <td>Username</td>
+                    <td>Password</td>
+                    <td>Role</td>
+                    <td>Action</td>
+                  </tr>
+                </thead>
+                <tbody id="tbody-data">
+                  <tr>
+                    <td colspan="4" class="text-center">
+                      Data Empty
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>  
+  <%- include('../../partials/foot'); %>
+  <script>
+    function get_list(){
+      let settings = {
+        "url": "/api/v1/user-game",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer <%= token %>",
+        },
+      };
+
+      let el = $('#tbody-data')
+
+      $.ajax(settings).done((res) => {
+        if(res?.data?.length > 0){
+          let html = ''
+          let data = res?.data
+          let current_id = '<%= user_current?.id %>'
+
+          data.forEach(obj => {
+            html += '<tr>'
+            html += `<td>${obj.uid}</td>`
+            html += `<td>${obj.username}</td>`
+            html += `<td>${obj.password}</td>`
+            html += `<td>${obj?.role?.name}</td>`
+            html += `<td>
+                <a href="/user-game-biodata?user_game_id=${obj.id}" class="btn btn-sm btn-custom">Biodata</a>
+                <a href="/user-game-history?user_game_id=${obj.id}" class="btn btn-sm btn-custom">History</a>
+                <a href="/user-game/update/${obj.id}" class="btn btn-sm btn-custom"><i class="fa-solid fa-pencil"></i></a>
+                ${(current_id == obj.id ? '' : `<button onclick="onDelete(${obj.id})" class="btn btn-sm btn-custom"><i class="fa-solid fa-trash"></i></button>`)}
+                <a href="/user-game/show/${obj.id}" class="btn btn-sm btn-custom"><i class="fa-solid fa-eye"></i></a>
+              </td>`
+            html += '</tr>'
+          })
+          el.html(html)
+        }else{
+          el.html(`<tr>
+            <td colspan="5" class="text-center">
+              Data Empty
+            </td>
+          </tr>`)
+        }
+      }).fail((xhr) => {
+        alert('Failed Fetch Data From Server')
+      })
+    }
+
+    function onDelete(id){
+      let settings = {
+        "url": "/api/v1/user-game/"+id,
+        "method": "DELETE",
+        "timeout": 0,
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer <%= token %>",
+        },
+      };
+
+      if(confirm("Are you sure delete data?")){
+        $.ajax(settings).done(function (res) {
+          alert('Success Delete Data')
+          get_list()
+        }).fail((xhr) => {
+          alert('Failed Delete Data')
+        })
+      }
+    }
+
+    $(() => {
+      get_list()
+    })
+  </script>
+</body>
+
+</html>

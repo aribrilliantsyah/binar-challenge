@@ -1,0 +1,34 @@
+name: Main
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with: 
+          node-version: "14.x"
+      - name: Install dependencies
+        run: npm install
+      - name: Install sequlize-cli
+        run: npm install sequelize-cli
+      - name: Migrate DB
+        run: npx sequelize db:migrate --env production
+      # - name: Test
+      #   run: npm test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: "014ea6ef-f2a5-49d0-a571-4e653ebd5b03"
+          heroku_app_name: "binar-ch6"
+          heroku_email: "ariardiansyah101@gmail.com"
