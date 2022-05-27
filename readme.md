@@ -2,6 +2,7 @@
 
 - Setup
     - `npm install`
+    - `npm install sequelize-cli -g`
     - `sequelize db:create`
     - `sequelize db:migrate:all`
     - `sequelize db:seed:all`
