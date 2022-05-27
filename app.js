@@ -25,7 +25,7 @@ const swaggerDocument = YAML.load('collection.yaml')
 const originalSend = app.response.send
 
 let log_name = './logs/access_log_'+moment().format('YYYY_MM_DD')+'.log';
-let accessLogStream = fs.createWriteStream(log_name, { flags: 'a' })
+let accessLogStream = fs.createWriteStream(path.join(__dirname, log_name), { flags: 'a' })
 
 app.response.send = function sendOverWrite(body) {
     originalSend.call(this, body)

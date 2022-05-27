@@ -21,6 +21,8 @@ jobs:
         run: npx sequelize db:migrate --env production
       - name: Insert Seeder
         run: npx sequelize db:seed:all --env production
+      - name: Create logs
+        run: mkdir logs
       # - name: Test
       #   run: npm test
 
