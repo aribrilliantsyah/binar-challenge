@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "c42690c6-1f01-4cae-99b7-b650f5e70977",
-		"name": "CHALLENGE 5 - ARI",
+		"name": "CHALLENGE 5 - 7 - ARI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"ariganteng\",\r\n    \"password\": \"rahasia\"\r\n}",
+							"raw": "{\r\n    \"username\": \"adminganteng\",\r\n    \"password\": \"rahasia\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -81,7 +81,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhcmlnYW50ZW5nIiwicGFzc3dvcmQiOiJyYWhhc2lhIiwiaWF0IjoxNjUwNTQyODA3LCJleHAiOjE2NTA2MjkyMDd9.VKWRlW1qg0Hhu2s4E5rlOyVGWPGsDK06U0_uyT5rgjI",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbmdhbnRlbmciLCJwYXNzd29yZCI6InJhaGFzaWEiLCJyb2xlX2lkIjoxLCJpYXQiOjE2NTM1NjA4NTMsImV4cCI6MTY1MzY0NzI1M30.VQ3PFkv1NmoILvmL5nTmtCrHX_-wU0Mh8m0XmJj9SFA",
 									"type": "string"
 								}
 							]
@@ -280,7 +280,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhcmlnYW50ZW5nIiwicGFzc3dvcmQiOiJyYWhhc2lhIiwiaWF0IjoxNjUwNTQyODA3LCJleHAiOjE2NTA2MjkyMDd9.VKWRlW1qg0Hhu2s4E5rlOyVGWPGsDK06U0_uyT5rgjI",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbmdhbnRlbmciLCJwYXNzd29yZCI6InJhaGFzaWEiLCJyb2xlX2lkIjoxLCJpYXQiOjE2NTM1NjA4NTMsImV4cCI6MTY1MzY0NzI1M30.VQ3PFkv1NmoILvmL5nTmtCrHX_-wU0Mh8m0XmJj9SFA",
 									"type": "string"
 								}
 							]
@@ -355,7 +355,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhcmlnYW50ZW5nIiwicGFzc3dvcmQiOiJyYWhhc2lhIiwiaWF0IjoxNjUwNTQyODA3LCJleHAiOjE2NTA2MjkyMDd9.VKWRlW1qg0Hhu2s4E5rlOyVGWPGsDK06U0_uyT5rgjI",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhcmlnYW50ZW5nMTEiLCJwYXNzd29yZCI6InJhaGFzaWEiLCJpYXQiOjE2NTI0Mzc1OTAsImV4cCI6MTY1MjUyMzk5MH0.n_eFijE12wGnRIpGt2AthQ9hRdamB7KLarDzyIOYTGc",
 									"type": "string"
 								}
 							]
@@ -364,7 +364,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user_game_id\": 3,\r\n    \"name\": \"Ari Ardiansyah\",\r\n    \"gender\": \"Male\",\r\n    \"date_of_birth\": \"2000-09-08\",\r\n    \"place_of_birth\": \"Bandung\",\r\n    \"address\": \"Kp.Rancakasiat\"\r\n}",
+							"raw": "{\r\n    \"user_game_id\": 1,\r\n    \"name\": \"Ari Ardiansyah\",\r\n    \"gender\": \"Male\",\r\n    \"date_of_birth\": \"2000-09-08\",\r\n    \"place_of_birth\": \"Bandung\",\r\n    \"address\": \"Kp.Rancakasiat\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -560,7 +560,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhcmlnYW50ZW5nIiwicGFzc3dvcmQiOiJyYWhhc2lhIiwiaWF0IjoxNjUwNTQyODA3LCJleHAiOjE2NTA2MjkyMDd9.VKWRlW1qg0Hhu2s4E5rlOyVGWPGsDK06U0_uyT5rgjI",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbmdhbnRlbmciLCJwYXNzd29yZCI6InJhaGFzaWEiLCJyb2xlX2lkIjoxLCJpYXQiOjE2NTM1NzIwNzksImV4cCI6MTY1MzY1ODQ3OX0.erUpJrbOs-_fMXosFmoMTZ5pr1k6tm6kmvIP1HE89jE",
 									"type": "string"
 								}
 							]
@@ -569,7 +569,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user_game_id\": 3,\r\n    \"score\": 10,\r\n    \"start_at\": \"2022-04-07 10:10:00\",\r\n    \"end_at\": \"2022-04-07 12:10:00\"\r\n}",
+							"raw": "{\r\n    \"user_game_id\": 1,\r\n    \"score\": 10,\r\n    \"start_at\": \"2022-04-07 10:10:00\",\r\n    \"end_at\": \"2022-04-07 12:10:00\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -600,7 +600,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhcmlnYW50ZW5nIiwicGFzc3dvcmQiOiJyYWhhc2lhIiwiaWF0IjoxNjUwNTQyODA3LCJleHAiOjE2NTA2MjkyMDd9.VKWRlW1qg0Hhu2s4E5rlOyVGWPGsDK06U0_uyT5rgjI",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJhZG1pbmdhbnRlbmciLCJwYXNzd29yZCI6InJhaGFzaWEiLCJyb2xlX2lkIjoxLCJpYXQiOjE2NTM1NTcxMDksImV4cCI6MTY1MzY0MzUwOX0.H_BnAWCNYulfrUEJ7UwoqUIGbDtq921YwC1mUrAyL-Y",
 									"type": "string"
 								}
 							]
@@ -609,7 +609,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user_game_id\": 4,\r\n    \"score\": 100,\r\n    \"start_at\": \"2022-04-07 10:10:00\",\r\n    \"end_at\": \"2022-04-07 12:10:00\"\r\n}",
+							"raw": "{\r\n    \"user_game_id\": 1,\r\n    \"score\": 100,\r\n    \"start_at\": \"2022-04-07 10:10:00\",\r\n    \"end_at\": \"2022-04-07 12:10:00\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -632,7 +632,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "6"
 								}
 							]
 						}
@@ -647,7 +647,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhcmlnYW50ZW5nIiwicGFzc3dvcmQiOiJyYWhhc2lhIiwiaWF0IjoxNjUwNTQyODA3LCJleHAiOjE2NTA2MjkyMDd9.VKWRlW1qg0Hhu2s4E5rlOyVGWPGsDK06U0_uyT5rgjI",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJhZG1pbmdhbnRlbmciLCJwYXNzd29yZCI6InJhaGFzaWEiLCJyb2xlX2lkIjoxLCJpYXQiOjE2NTM1NTcxMDksImV4cCI6MTY1MzY0MzUwOX0.H_BnAWCNYulfrUEJ7UwoqUIGbDtq921YwC1mUrAyL-Y",
 									"type": "string"
 								}
 							]
@@ -665,6 +665,134 @@
 								"api",
 								"v1",
 								"user-game-history",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upload video by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJhZG1pbmdhbnRlbmciLCJwYXNzd29yZCI6InJhaGFzaWEiLCJyb2xlX2lkIjoxLCJpYXQiOjE2NTM1NTcxMDksImV4cCI6MTY1MzY0MzUwOX0.H_BnAWCNYulfrUEJ7UwoqUIGbDtq921YwC1mUrAyL-Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "media",
+									"type": "file",
+									"src": "/C:/Users/ariar.DAK/Downloads/SampleVideo_1280x720_1mb.mp4"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/user-game-history/upload-video/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"user-game-history",
+								"upload-video",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "role",
+			"item": [
+				{
+					"name": "get all role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJhZG1pbmdhbnRlbmciLCJwYXNzd29yZCI6InJhaGFzaWEiLCJyb2xlX2lkIjoxLCJpYXQiOjE2NTM1NTcxMDksImV4cCI6MTY1MzY0MzUwOX0.H_BnAWCNYulfrUEJ7UwoqUIGbDtq921YwC1mUrAyL-Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/role",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find by id role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhcmlnYW50ZW5nIiwicGFzc3dvcmQiOiJyYWhhc2lhIiwiaWF0IjoxNjUwNTQyODA3LCJleHAiOjE2NTA2MjkyMDd9.VKWRlW1qg0Hhu2s4E5rlOyVGWPGsDK06U0_uyT5rgjI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/role/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"role",
 								":id"
 							],
 							"variable": [

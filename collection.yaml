@@ -1,9 +1,9 @@
 openapi: 3.0.0
 info:
-  title: CHALLENGE 5 - ARI
+  title: CHALLENGE 5 - 7 - ARI
   version: 1.0.0
 servers:
-  - url: https://argan-ch06.herokuapp.com
+  - url: http://localhost:3000
 components:
   securitySchemes:
     bearerAuth:
@@ -14,6 +14,7 @@ tags:
   - name: user game
   - name: user game biodata
   - name: user game history
+  - name: role
 paths:
   /api/v1/login:
     post:
@@ -26,7 +27,7 @@ paths:
             schema:
               type: object
               example:
-                username: ariganteng
+                username: adminganteng
                 password: rahasia
       responses:
         '200':
@@ -173,7 +174,7 @@ paths:
             schema:
               type: object
               example:
-                user_game_id: 3
+                user_game_id: 1
                 name: Ari Ardiansyah
                 gender: Male
                 date_of_birth: '2000-09-08'
@@ -281,7 +282,7 @@ paths:
             schema:
               type: object
               example:
-                user_game_id: 3
+                user_game_id: 1
                 score: 10
                 start_at: '2022-04-07 10:10:00'
                 end_at: '2022-04-07 12:10:00'
@@ -321,7 +322,7 @@ paths:
             schema:
               type: object
               example:
-                user_game_id: 4
+                user_game_id: 1
                 score: 100
                 start_at: '2022-04-07 10:10:00'
                 end_at: '2022-04-07 12:10:00'
@@ -333,7 +334,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '6'
       responses:
         '200':
           description: Successful response
@@ -343,6 +344,65 @@ paths:
       tags:
         - user game history
       summary: delete user history
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/user-game-history/upload-video/{id}:
+    post:
+      tags:
+        - user game history
+      summary: upload video by id
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                media:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/role:
+    get:
+      tags:
+        - role
+      summary: get all role
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/role/{id}:
+    get:
+      tags:
+        - role
+      summary: find by id role
       security:
         - bearerAuth: []
       parameters:
