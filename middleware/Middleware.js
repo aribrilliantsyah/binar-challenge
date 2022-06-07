@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const privateKey = 'Ari-Ganteng-Banget'
+const privateKey = process.env.JWT_PRIVATE_KEY
 
 class Middleware {
 
@@ -22,6 +22,7 @@ class Middleware {
         })
 
         jwt.verify(token, privateKey, (err, user) => {
+            // console.log(user)
             if (err) return res.status(403).json({
                 'message': 'Forbidden'
             })

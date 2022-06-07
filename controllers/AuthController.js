@@ -11,6 +11,10 @@ class AuthController {
         req.session.token = null
         res.redirect('/login')    
     }
+
+    forgot_password(req, res){
+        res.render('auth/forgot_password')
+    }
 }
 
 module.exports = AuthController

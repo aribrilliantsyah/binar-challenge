@@ -16,6 +16,7 @@ module.exports = {
      await queryInterface.bulkInsert('user_game', [
       {
         'uid': uuidv4(),
+        'email': 'admin@ch.com',
         'username': 'adminganteng',
         'password': 'rahasia',
         'token': '',
@@ -25,6 +26,7 @@ module.exports = {
       },
       {
         'uid': uuidv4(),
+        'email': 'member@ch.com',
         'username': 'member1',
         'password': 'rahasia',
         'token': '',

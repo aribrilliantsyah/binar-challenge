@@ -50,13 +50,15 @@
                 <!-- <div class="form-text"></div> -->
               </div>
               <div class="mb-3 col-xl-6">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-control form-control-sm">
+                <!-- <div class="form-text"></div> -->
+              </div>
+              <div class="mb-3 col-xl-6">
                 <label class="form-label">Role</label>
                 <select name="role_id" class="form-control form-control-sm">
                   <option value="" disabled selected>[ Choose One ]</option>
                 </select>
-              </div>
-              <div class="mb-3 col-xl-6">
-                
               </div>
               <div class="col-xl-6">
                 <button type="submit" class="btn btn-custom">Submit</button>
@@ -114,6 +116,7 @@
 
       let el_username = $('[name="username"]')
       let el_password = $('[name="password"]')
+      let el_email = $('[name="email"]')
       let el_role_id = $('[name="role_id"]')
 
       $.ajax(settings).done((res) => {
@@ -121,6 +124,7 @@
           //console.log(res?.data)
           el_username.val(res?.data?.username)
           el_password.val(res?.data?.password)
+          el_email.val(res?.data?.email)
           el_role_id.val(res?.data?.role_id).trigger('change')
         }
       }).fail((xhr) => {
@@ -137,8 +141,10 @@
       let id = $('[name="id"]').val()
       let username = $('[name="username"]').val()
       let password = $('[name="password"]').val()
+      let email = $('[name="email"]').val()
+      let role_id = $('[name="role_id"]').val()
 
-      if(!username || !password){
+      if(!username || !password || !role_id || !email){
         alert('Please Complete the Form!')
         return;
       }
@@ -154,7 +160,9 @@
 
         "data": JSON.stringify({
           "username": username,
-          "password": password
+          "password": password,
+          "role_id": role_id,
+          "email": email,
         }),
       }
 

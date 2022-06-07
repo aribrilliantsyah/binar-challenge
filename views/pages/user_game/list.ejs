@@ -41,6 +41,7 @@
                 <thead>
                   <tr>
                     <td>UID</td>
+                    <td>Email</td>
                     <td>Username</td>
                     <td>Password</td>
                     <td>Role</td>
@@ -85,6 +86,7 @@
           data.forEach(obj => {
             html += '<tr>'
             html += `<td>${obj.uid}</td>`
+            html += `<td>${obj.email}</td>`
             html += `<td>${obj.username}</td>`
             html += `<td>${obj.password}</td>`
             html += `<td>${obj?.role?.name}</td>`
@@ -100,7 +102,7 @@
           el.html(html)
         }else{
           el.html(`<tr>
-            <td colspan="5" class="text-center">
+            <td colspan="6" class="text-center">
               Data Empty
             </td>
           </tr>`)

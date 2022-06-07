@@ -27,7 +27,9 @@ describe('AuthController Test', () => {
   test('function register with Register success, please sign in', async () => {
     const req = mockRequest({
       username: 'ariganteng',
-      password: 'rahasia'
+      email: "kurosaki.ari.kun@gmail.com",
+      password: 'rahasia',
+      role_id: 1,
     })
     const res = mockResponse()
     await base.register(req, res)

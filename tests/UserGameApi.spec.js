@@ -7,7 +7,7 @@ const prefix = '/api/v1/'
 const controller = 'user-game'
 const path = `${prefix}${controller}` 
 const jwt = require('jsonwebtoken')
-const privateKey = 'Ari-Ganteng-Banget'
+const privateKey = process.env.JWT_PRIVATE_KEY
 
 let token = '';
 let id = 1;
@@ -16,7 +16,9 @@ describe('User Game API Test', () => {
   beforeAll(async () => {
     let account = {
       "username": "ariganteng11",
-      "password": "rahasia"
+      "email": "kurosaki.ari.kun@gmail.com",
+      "password": "rahasia",
+      "role_id": 1,
     }
     
     let user_game_id = await UserGame.create(account)
@@ -51,7 +53,9 @@ describe('User Game API Test', () => {
     const { body, statusCode } = await request(app).post(`${path}`)
     .send({
       "username": "ariganteng",
-      "password": "rahasia"
+      "password": "rahasia",
+      "role_id": 1,
+      "email": "kurosaki.ari.kun@gmail.com"
     })
     .set({
       Authorization: `Bearer ${token}`
@@ -75,7 +79,8 @@ describe('User Game API Test', () => {
     const { body, statusCode } = await request(app).put(`${path}/${id}`)
       .send({
         "username": "ariganteng123",
-        "password": "rahasia"
+        "password": "rahasia",
+        "email": "kurosaki.ari.kun@gmail.com"
       })
       .set({
         Authorization: `Bearer ${token}`

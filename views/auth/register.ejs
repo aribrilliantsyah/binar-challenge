@@ -38,6 +38,10 @@
         <label for="floatingUsername">Username</label>
       </div>
       <div class="form-floating">
+        <input type="email" name="email" class="form-control" id="floatingEmail" placeholder="Email">
+        <label for="floatingEmail">Email</label>
+      </div>
+      <div class="form-floating">
         <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
         <label for="floatingPassword">Password</label>
       </div>
@@ -53,8 +57,9 @@
 
       let username = $('[name="username"]').val()
       let password = $('[name="password"]').val()
+      let email = $('[name="email"]').val()
 
-      if(!username || !password){
+      if(!username || !password || !email){ 
         alert('Please Complete the Form!')
         return;
       }
@@ -68,7 +73,8 @@
         },
         "data": JSON.stringify({
           "username": username,
-          "password": password
+          "password": password,
+          "email": email
         }),
       };
 

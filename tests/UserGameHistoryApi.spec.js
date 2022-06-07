@@ -7,7 +7,7 @@ const prefix = '/api/v1/'
 const controller = 'user-game-history'
 const path = `${prefix}${controller}` 
 const jwt = require('jsonwebtoken')
-const privateKey = 'Ari-Ganteng-Banget'
+const privateKey = process.env.JWT_PRIVATE_KEY
 
 let token = '';
 let id = 1;
@@ -17,7 +17,9 @@ describe('User Game history API Test', () => {
   beforeAll(async () => {
     let account = {
       "username": "ariganteng11",
-      "password": "rahasia"
+      "email": "kurosaki.ari.kun@gmail.com",
+      "password": "rahasia",
+      "role_id": 1,
     }
     
     let res = await UserGame.create(account)

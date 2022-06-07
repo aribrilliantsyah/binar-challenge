@@ -11,6 +11,9 @@ module.exports = {
       uid: {
         type: Sequelize.STRING
       },
+      email: {
+        type: Sequelize.STRING
+      },
       username: {
         type: Sequelize.STRING
       },
@@ -18,6 +21,9 @@ module.exports = {
         type: Sequelize.STRING
       },
       token: {
+        type: Sequelize.STRING
+      },
+      otp: {
         type: Sequelize.STRING
       },
       role_id: {

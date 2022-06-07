@@ -3,6 +3,10 @@ on:
   push:
     branches: [ master ]
   workflow_dispatch:
+
+env: 
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,6 +21,8 @@ jobs:
         run: npm install
       - name: Install sequlize-cli
         run: npm install sequelize-cli
+      - name: Migrate DB
+        run: npx sequelize db:migrate:undo:all --env production
       - name: Migrate DB
         run: npx sequelize db:migrate --env production
       - name: Insert Seeder
@@ -33,6 +39,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          heroku_api_key: "014ea6ef-f2a5-49d0-a571-4e653ebd5b03"
-          heroku_app_name: "binar-ch6"
-          heroku_email: "ariardiansyah101@gmail.com"
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}

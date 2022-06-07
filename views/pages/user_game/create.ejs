@@ -49,13 +49,15 @@
                 <!-- <div class="form-text"></div> -->
               </div>
               <div class="mb-3 col-xl-6">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-control form-control-sm">
+                <!-- <div class="form-text"></div> -->
+              </div>
+              <div class="mb-3 col-xl-6">
                 <label class="form-label">Role</label>
                 <select name="role_id" class="form-control form-control-sm">
                   <option value="" disabled selected>[ Choose One ]</option>
                 </select>
-              </div>
-              <div class="mb-3 col-xl-6">
-                
               </div>
               <div class="col-xl-6">
                 <button type="submit" class="btn btn-custom">Submit</button>
@@ -102,9 +104,10 @@
       e.preventDefault()
       let username = $('[name="username"]').val()
       let password = $('[name="password"]').val()
+      let email = $('[name="email"]').val()
       let role_id = $('[name="role_id"]').val()
 
-      if(!username || !password || !role_id){
+      if(!username || !password || !role_id || !email){
         alert('Please Complete the Form!')
         return;
       }
@@ -120,7 +123,8 @@
         "data": JSON.stringify({
           "username": username,
           "password": password,
-          "role_id": role_id
+          "role_id": role_id,
+          "email": email,
         }),
       };
 

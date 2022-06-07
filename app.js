@@ -1,7 +1,11 @@
+require('dotenv').config()
+
 const express = require("express")
 const session = require('express-session')
 const moment = require("moment")
 const morgan = require("morgan")
+//console.log(process.env)
+
 const swaggerUi = require('swagger-ui-express')
 const path = require('path')
 const YAML = require('yamljs')
@@ -50,10 +54,10 @@ morgan.token('req-body', (req, res) => {
     return null
 })
 
-// let log_name = '/logs/access_log_'+moment().format('YYYY_MM_DD')+'.log';
-// let accessLogStream = fs.createWriteStream(path.join(__dirname, log_name), { flags: 'a' })
+let log_name = '/logs/access_log_'+moment().format('YYYY_MM_DD')+'.log';
+let accessLogStream = fs.createWriteStream(path.join(__dirname, log_name), { flags: 'a' })
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] | @req :req-body => @res :res-body', {
-    // stream: accessLogStream
+    stream: accessLogStream
 }))
 
 app.set('view engine', 'ejs')

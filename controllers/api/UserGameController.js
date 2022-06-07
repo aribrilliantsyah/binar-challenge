@@ -87,10 +87,10 @@ class UserGameController {
   }
 
   create(req, res) {
-    let { username, password, role_id } = req.body
+    let { email, username, password, role_id } = req.body
     let uid = uuidv4()
     
-    if(!username || !password || !role_id){
+    if(!email || !username || !password || !role_id){
       return res.status(400).json({
         'message': 'Failed'
       })
@@ -98,6 +98,7 @@ class UserGameController {
     
     UserGame.create({
       uid: uid,
+      email: email,
       username: username,
       password: password,
       role_id: role_id,
@@ -116,8 +117,8 @@ class UserGameController {
   update(req, res) {
     let id = req.params.id   
     let usergame_data = {
+      email: req.body?.email,
       username: req.body?.username,
-      password: req.body?.password,
       role_id: req.body?.role_id,
     }
     let query = {
@@ -125,13 +126,19 @@ class UserGameController {
         id: id
       }
     }
-    
-    if(!usergame_data.username || !usergame_data.password || !usergame_data.role_id){
+    //console.log(usergame_data)
+
+    if(!usergame_data.email || !usergame_data.username || !usergame_data.role_id){
       return res.status(400).json({
         'message': 'Failed'
       })
     }
 
+    if(req.body?.password != undefined && req.body?.password != ''){
+      usergame_data.password = req.body?.password
+    }
+
+    //console.log(usergame_data)
     const checkBefore = (id, success, failed) => {
       UserGame.findOne({
         include: [

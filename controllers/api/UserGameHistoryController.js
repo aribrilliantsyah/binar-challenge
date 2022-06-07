@@ -73,7 +73,7 @@ class UserGameHistoryController {
 
   create(req, res) {
     let { user_game_id, score, start_at, end_at } = req.body
-    console.log(req.file)
+    //console.log(req.file)
     if(!user_game_id && !score && !start_at && !end_at){
       return res.status(400).json({
         'message': 'Failed'
@@ -174,7 +174,7 @@ class UserGameHistoryController {
             'data': userhistory_data
           })
         }).catch((err) => {
-          console.log('woy', err)
+          //console.log('woy', err)
           return res.status(400).json({
             'message': 'Failed'
           })
@@ -248,7 +248,7 @@ class UserGameHistoryController {
       }
     }
 
-    console.log(req?.file)
+    //console.log(req?.file)
 
     if(!userhistory_data.link_video){
       return res.status(400).json({
