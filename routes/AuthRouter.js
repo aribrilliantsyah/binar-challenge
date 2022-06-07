@@ -5,6 +5,7 @@ const Mailer = require('../utils/mailer')
 const ctl = new AuthController()
 
 router.get('/', (req, res) => {
+  console.log(process.env.DATABASE_URL)
   res.redirect('/login')
 })
 router.get('/login', ctl.login)
