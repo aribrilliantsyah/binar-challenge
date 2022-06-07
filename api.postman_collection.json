@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "c42690c6-1f01-4cae-99b7-b650f5e70977",
-		"name": "CHALLENGE 5 - 7 - ARI",
+		"name": "CHALLENGE BINAR - ARI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -45,7 +45,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"ariganteng11\",\r\n    \"password\": \"rahasia\"\r\n}",
+							"raw": "{\r\n    \"email\": \"ariardiansyah101@gmail.com\",\r\n    \"username\": \"ariganteng12\",\r\n    \"password\": \"rahasia\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -67,6 +67,96 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "forgot password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ariardiansyah101@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/forgot_password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"forgot_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify otp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": \"\",\r\n    \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/change_password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"change_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ariardiansyah101@gmail.com\",\r\n    \"otp\": 610630\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/verify_otp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"verify_otp"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -81,7 +171,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbmdhbnRlbmciLCJwYXNzd29yZCI6InJhaGFzaWEiLCJyb2xlX2lkIjoxLCJpYXQiOjE2NTM1NjA4NTMsImV4cCI6MTY1MzY0NzI1M30.VQ3PFkv1NmoILvmL5nTmtCrHX_-wU0Mh8m0XmJj9SFA",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbmdhbnRlbmciLCJwYXNzd29yZCI6InJhaGFzaWEiLCJyb2xlX2lkIjoxLCJpYXQiOjE2NTQ0NzQwNjAsImV4cCI6MTY1NDU2MDQ2MH0.TKTYL_h-CnNEjNcqfvb8rmwhuDbyINZoU6rF6GXMkTQ",
 									"type": "string"
 								}
 							]
@@ -112,7 +202,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhcmlnYW50ZW5nIiwicGFzc3dvcmQiOiJyYWhhc2lhIiwiaWF0IjoxNjUwNTQyODA3LCJleHAiOjE2NTA2MjkyMDd9.VKWRlW1qg0Hhu2s4E5rlOyVGWPGsDK06U0_uyT5rgjI",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbmdhbnRlbmciLCJwYXNzd29yZCI6InJhaGFzaWEiLCJyb2xlX2lkIjoxLCJpYXQiOjE2NTQ0NzQwNjAsImV4cCI6MTY1NDU2MDQ2MH0.TKTYL_h-CnNEjNcqfvb8rmwhuDbyINZoU6rF6GXMkTQ",
 									"type": "string"
 								}
 							]
@@ -150,7 +240,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhcmlnYW50ZW5nIiwicGFzc3dvcmQiOiJyYWhhc2lhIiwiaWF0IjoxNjUwNTQyODA3LCJleHAiOjE2NTA2MjkyMDd9.VKWRlW1qg0Hhu2s4E5rlOyVGWPGsDK06U0_uyT5rgjI",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbmdhbnRlbmciLCJwYXNzd29yZCI6InJhaGFzaWEiLCJyb2xlX2lkIjoxLCJpYXQiOjE2NTQ0NzQwNjAsImV4cCI6MTY1NDU2MDQ2MH0.TKTYL_h-CnNEjNcqfvb8rmwhuDbyINZoU6rF6GXMkTQ",
 									"type": "string"
 								}
 							]
@@ -159,7 +249,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"siganteng\",\r\n    \"password\": \"wkwkwk-ini-pass\"\r\n}",
+							"raw": "{\r\n    \"email\": \"ariardiansyah101@gmail.com\",\r\n    \"username\": \"siganteng\",\r\n    \"password\": \"wkwkwk-ini-pass\",\r\n    \"role_id\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -190,7 +280,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhcmlnYW50ZW5nIiwicGFzc3dvcmQiOiJyYWhhc2lhIiwiaWF0IjoxNjUwNTQyODA3LCJleHAiOjE2NTA2MjkyMDd9.VKWRlW1qg0Hhu2s4E5rlOyVGWPGsDK06U0_uyT5rgjI",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbmdhbnRlbmciLCJwYXNzd29yZCI6InJhaGFzaWEiLCJyb2xlX2lkIjoxLCJpYXQiOjE2NTQ0NzQwNjAsImV4cCI6MTY1NDU2MDQ2MH0.TKTYL_h-CnNEjNcqfvb8rmwhuDbyINZoU6rF6GXMkTQ",
 									"type": "string"
 								}
 							]
@@ -199,7 +289,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"ariganteng\",\r\n    \"password\": \"rahasia\"\r\n}",
+							"raw": "{\r\n    \"email\": \"ariardiansyah101@gmail.com\",\r\n    \"username\": \"siganteng1\",\r\n    \"role_id\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

@@ -1,9 +1,10 @@
 openapi: 3.0.0
 info:
-  title: CHALLENGE 5 - 7 - ARI
+  title: CHALLENGE BINAR - ARI
   version: 1.0.0
 servers:
-  - url: https://binar-ch6.herokuapp.com/
+  # - url: http://localhost:3000
+  - url: https://argan-binar.herokuapp.com
 components:
   securitySchemes:
     bearerAuth:
@@ -45,8 +46,62 @@ paths:
             schema:
               type: object
               example:
-                username: ariganteng11
+                email: ariardiansyah101@gmail.com
+                username: ariganteng12
                 password: rahasia
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/forgot_password:
+    post:
+      tags:
+        - auth
+      summary: forgot password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: ariardiansyah101@gmail.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/change_password:
+    post:
+      tags:
+        - auth
+      summary: verify otp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                uid: ''
+                password: ''
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/verify_otp:
+    post:
+      tags:
+        - auth
+      summary: change password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: ariardiansyah101@gmail.com
+                otp: 610630
       responses:
         '200':
           description: Successful response
@@ -74,8 +129,10 @@ paths:
             schema:
               type: object
               example:
+                email: ariardiansyah101@gmail.com
                 username: siganteng
                 password: wkwkwk-ini-pass
+                role_id: 1
       security:
         - bearerAuth: []
       responses:
@@ -112,8 +169,9 @@ paths:
             schema:
               type: object
               example:
-                username: ariganteng
-                password: rahasia
+                email: ariardiansyah101@gmail.com
+                username: siganteng1
+                role_id: 1
       security:
         - bearerAuth: []
       parameters:
