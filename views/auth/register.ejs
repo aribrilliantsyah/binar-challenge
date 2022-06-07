@@ -63,7 +63,7 @@
         alert('Please Complete the Form!')
         return;
       }
-
+      
       let settings = {
         "url": "/api/v1/register",
         "method": "POST",
@@ -84,7 +84,7 @@
           window.location = '/login'
         }
       }).fail((xhr) => {
-        alert('Failed To Login')
+        alert('Failed To Register')
       })
     })
   </script>
