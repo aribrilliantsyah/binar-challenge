@@ -19,7 +19,7 @@ class AuthController {
     
     let user_game = await UserGame.findOne({where: {username: username }})
 
-    //console.log(user_game)
+    console.log(user_game)
     if(!user_game?.username){
       return res.status(200).json({
         'message': 'Username not found'
