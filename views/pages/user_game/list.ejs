@@ -88,7 +88,7 @@
             html += `<td>${obj.uid}</td>`
             html += `<td>${obj.email}</td>`
             html += `<td>${obj.username}</td>`
-            html += `<td>${obj.password}</td>`
+            html += `<td>****</td>`
             html += `<td>${obj?.role?.name}</td>`
             html += `<td>
                 <a href="/user-game-biodata?user_game_id=${obj.id}" class="btn btn-sm btn-custom">Biodata</a>
@@ -102,7 +102,7 @@
           el.html(html)
         }else{
           el.html(`<tr>
-            <td colspan="6" class="text-center">
+            <td colspan="5" class="text-center">
               Data Empty
             </td>
           </tr>`)

@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const controller = require('../controllers/api/AuthController')
 const { sequelize } = require('../models')
 const { QueryTypes } = require('sequelize')
@@ -11,14 +13,13 @@ const mockResponse = () => {
 const base = new controller();
 
 describe('AuthController Test', () => {
-  beforeAll(async() => {
+  beforeAll(async () => {
+
   })
 
   afterAll(async () => {
     try {
-      await sequelize.query("TRUNCATE user_game, user_game_biodata, user_game_history RESTART IDENTITY;", {
-        type: QueryTypes.RAW
-      });
+      await sequelize.query("TRUNCATE user_game, user_game_biodata, user_game_history RESTART IDENTITY;", { type: QueryTypes.RAW });
     } catch (error) {
       //console.log(error)
     }

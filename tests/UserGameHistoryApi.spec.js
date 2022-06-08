@@ -16,7 +16,7 @@ let user_game_id = '';
 describe('User Game history API Test', () => {
   beforeAll(async () => {
     let account = {
-      "username": "ariganteng11",
+      "username": "ariganteng",
       "email": "kurosaki.ari.kun@gmail.com",
       "password": "rahasia",
       "role_id": 1,

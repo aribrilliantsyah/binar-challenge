@@ -1,5 +1,7 @@
 const { UserGame, UserGameBiodata, UserGameHistory, Role } = require("../../models")
 const { v4: uuidv4 } = require('uuid')
+const bcrypt = require('bcryptjs')
+const salt = bcrypt.genSaltSync(10)
 
 class UserGameController {
   
@@ -100,7 +102,7 @@ class UserGameController {
       uid: uid,
       email: email,
       username: username,
-      password: password,
+      password: bcrypt.hashSync(password, salt),
       role_id: role_id,
     }).then((usergame) => {
       return res.status(201).json({
@@ -135,7 +137,7 @@ class UserGameController {
     }
 
     if(req.body?.password != undefined && req.body?.password != ''){
-      usergame_data.password = req.body?.password
+      usergame_data.password = bcrypt.hashSync(req.body?.password, salt)
     }
 
     //console.log(usergame_data)

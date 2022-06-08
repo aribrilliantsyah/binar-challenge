@@ -5,6 +5,8 @@ const privateKey = process.env.JWT_PRIVATE_KEY
 const { v4: uuidv4 } = require('uuid')
 const Mailer = require("../../utils/mailer")
 const { genOTP } = require("../../utils/otp")
+const bcrypt = require('bcryptjs');
+const salt = bcrypt.genSaltSync(10);
 
 class AuthController {
   
@@ -19,14 +21,16 @@ class AuthController {
     
     let user_game = await UserGame.findOne({where: {username: username }})
 
-    console.log(user_game)
+    // console.log(user_game)
     if(!user_game?.username){
       return res.status(200).json({
         'message': 'Username not found'
       })
     }
 
-    if(password != user_game?.password){
+
+    // if(password != user_game?.password){
+    if(!bcrypt.compareSync(password, user_game?.password)){
       return res.status(200).json({
         'message': 'Invalid password'
       })
@@ -78,7 +82,7 @@ class AuthController {
       uid: uid,
       email: email,
       username: username,
-      password: password,
+      password: bcrypt.hashSync(password, salt),
       role_id: 2
     }).then(async (usergame) => {
       let mailer = new Mailer({
@@ -206,7 +210,7 @@ class AuthController {
     }
     
     await UserGame.update({
-      password: password
+      password: bcrypt.hashSync(password, salt)
     }, {
       where: {
         id: user_game.id

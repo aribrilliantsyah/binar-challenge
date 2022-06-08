@@ -15,7 +15,7 @@ let id = 1;
 describe('User Game API Test', () => {
   beforeAll(async () => {
     let account = {
-      "username": "ariganteng11",
+      "username": "ariganteng",
       "email": "kurosaki.ari.kun@gmail.com",
       "password": "rahasia",
       "role_id": 1,
@@ -25,7 +25,8 @@ describe('User Game API Test', () => {
     token = jwt.sign({
       id: user_game_id,
       username: account.username,
-      password: account.password
+      password: account.password,
+      role_id: account.role_id,
     }, privateKey, {
       expiresIn: '1d'
     })
@@ -80,7 +81,8 @@ describe('User Game API Test', () => {
       .send({
         "username": "ariganteng123",
         "password": "rahasia",
-        "email": "kurosaki.ari.kun@gmail.com"
+        "email": "kurosaki.ari.kun@gmail.com",
+        "role_id": 1,
       })
       .set({
         Authorization: `Bearer ${token}`
@@ -121,7 +123,9 @@ describe('User Game API Test', () => {
     const { body, statusCode } = await request(app).put(`${path}/2`)
       .send({
         "username": "ariganteng123",
-        "password": "rahasia"
+        "password": "rahasia",
+        "email": "kurosaki.ari.kun@gmail.com",
+        "role_id": 1,
       })
     expect(statusCode).toEqual(401)
     expect(body.message).toEqual('Unauthorized')
@@ -161,7 +165,9 @@ describe('User Game API Test', () => {
     const { body, statusCode } = await request(app).put(`${path}/${id}`)
       .send({
         "username": "ariganteng123",
-        "password": "rahasia"
+        "password": "rahasia",
+        "email": "kurosaki.ari.kun@gmail.com",
+        "role_id": 1,
       })
       .set({
         Authorization: `Bearer ${token}`
